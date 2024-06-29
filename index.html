@@ -3,34 +3,79 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+
     <link rel="stylesheet" href="style.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <title>TCOD Translator</title>
   </head>
   <body>
-    <div class="flex items-center justify-center h-screen">
+    <div class="flex items-center justify-center md:h-screen p-4">
       <div class="p-4 bg-slate-100 rounded shadow w-[90%]">
         <div class="grid grid-cols-12 gap-4 items-center">
-          <div class="col-span-5">
+          <div class="col-span-full md:col-span-5 flex flex-col gap-4">
+            <select
+              id="select_lang"
+              class="w-full outline-none bg-slate-300 p-2 rounded"
+            >
+              <option value="en">English</option>
+              <option value="zh-hk">Chines</option>
+              <option value="fr">French</option>
+              <option value="de">German</option>
+              <option value="fa">Persian</option>
+              <option value="fil">Filipino</option>
+            </select>
             <textarea
-              class="border-2 border-slate-200 p-1 rounded outline-none font-semibold w-full"
+              class="border-2 resize-none border-slate-200 focus:border-slate-300 p-1 rounded outline-none text-gray-600 text-start font-semibold w-full"
               id="input_text"
+              placeholder="Text..."
               rows="10"
+              spellcheck="false"
+              required
             ></textarea>
           </div>
-          <div class="col-span-2">
-            <button
-              onclick="translateText()"
-              class="bg-sky-500 rounded p-2 text-white font-semibold w-full"
-            >
-              Translate
-            </button>
+          <div class="col-span-full md:col-span-2">
+            <div class="flex flex-col gap-4">
+              <button
+                onclick="translateText()"
+                class="bg-sky-500 hover:bg-sky-600 transition rounded p-2 text-white font-semibold w-full"
+              >
+                <i class="bi bi-translate"></i> ترجمه
+              </button>
+
+              <button
+                onclick="clearFeild()"
+                class="text-3xl text-gray-500 hover:text-red-500 transition"
+              >
+                <i class="bi bi-trash"></i>
+              </button>
+            </div>
           </div>
-          <div class="col-span-5">
+          <div class="col-span-full md:col-span-5 flex flex-col gap-4">
+            <select
+              id="select_target_lang"
+              class="w-full outline-none bg-slate-300 p-2 rounded"
+            >
+              <option value="en">English</option>
+              <option value="zh-hk">Chines</option>
+              <option value="fr">French</option>
+              <option value="de">German</option>
+              <option value="fa">Persian</option>
+              <option value="fil">Filipino</option>
+            </select>
             <textarea
-              class="border-2 border-slate-200 p-1 rounded outline-none font-semibold w-full"
+              class="border-2 resize-none border-slate-200 focus:border-slate-300 p-1 rounded outline-none text-gray-600 text-start font-semibold w-full"
               id="output_text"
               rows="10"
+              spellcheck="false"
             ></textarea>
           </div>
         </div>
@@ -38,5 +83,9 @@
     </div>
 
     <script src="app.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
+    ></script>
   </body>
 </html>

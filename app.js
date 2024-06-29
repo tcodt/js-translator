@@ -2,7 +2,7 @@ const translateText = () => {
   const input_text = document.getElementById("input_text").value;
   const output_text = document.getElementById("output_text");
 
-  googleTranslateApi(input_text, "en", "fa").then(
+  googleTranslateApi(input_text, "en", "fil").then(
     (res) => (output_text.value = res.text)
   );
 };
